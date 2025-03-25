@@ -1,6 +1,7 @@
 using Serilog;
 using UserManagement.Application;
 using UserManagement.Persistence;
+using UserManagement.Infrastructure;
 using UserManagement.Shared;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,9 +10,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddApplicationServices();
+builder.Services.AddApplicationServices(builder.Configuration);
 
 builder.Services.AddPersistenceServices(builder.Configuration);
+
+builder.Services.AddInfrastructureServices();
 
 // Configuring Serilog
 Log.Logger = new LoggerConfiguration()

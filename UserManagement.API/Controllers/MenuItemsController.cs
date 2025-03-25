@@ -39,7 +39,7 @@ namespace UserManagement.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateOrder(CreateMenuItemCommand command)
+        public async Task<IActionResult> CreateMenuItem(CreateMenuItemCommand command)
         {
             var menuItemId = await _mediator.Send(command);
             return CreatedAtAction(nameof(GetMenuItem), new { id = menuItemId }, menuItemId);
